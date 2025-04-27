@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://competlib.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://KinematicBody.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=23]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="KinematicBody"]
+enabled = true
+cast_to = Vector3( 1, 0, 0 )
+debug_shape_custom_color = Color( 0, 1, 0.109804, 1 )
+debug_shape_thickness = 5
+
+[node name="Camera" type="Camera" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.5, 3 )
+
+[node name="SubRayCast" type="RayCast" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+enabled = true
+cast_to = Vector3( 1, 0, 0 )
+debug_shape_custom_color = Color( 0.0823529, 0, 0.662745, 1 )
+debug_shape_thickness = 5
+
+[node name="GravityRayCast" type="RayCast" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.8, 0 )
+debug_shape_custom_color = Color( 0, 0.976471, 1, 1 )
+debug_shape_thickness = 5
+
+[node name="ClimbRayCast" type="RayCast" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+cast_to = Vector3( 2, -0.3, 0 )
+debug_shape_custom_color = Color( 0.533333, 0, 0.607843, 1 )
+debug_shape_thickness = 5
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+shape = SubResource( 23 )
+
+[node name="CSGSphere" type="CSGSphere" parent="KinematicBody"]
+radius = 0.5
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_center_x = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -65542, 0, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 1, 0, -131067, 1, 0, -65542, 1, 0, -65541, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -4, 1, 0, -131072, 2, 0, -131071, 2, 0, -131070, 2, 0, -131069, 2, 0, -131068, 2, 0, -131067, 2, 0, -65542, 2, 0, -65541, 2, 0, -65540, 2, 0, -65539, 2, 0, -65538, 2, 0, -65537, 2, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -65542, 3, 0, -65541, 3, 0, -65540, 3, 0, -65539, 3, 0, -65538, 3, 0, -65537, 3, 0, -131071, 65531, 0, -131070, 65531, 0, -131069, 65531, 0, -131068, 65531, 0, -65541, 65531, 0, -65540, 65531, 0, -65539, 65531, 0, -131071, 65532, 0, -131068, 65532, 0, -65541, 65532, 0, -65539, 65532, 0, -131072, 65533, 0, -131071, 65533, 0, -131070, 65533, 0, -131069, 65533, 0, -131068, 65533, 0, -131067, 65533, 0, -65542, 65533, 0, -65541, 65533, 0, -65540, 65533, 0, -65539, 65533, 0, -65538, 65533, 0, -65537, 65533, 0, -131072, 65534, 0, -131071, 65534, 0, -131070, 65534, 0, -131069, 65534, 0, -131068, 65534, 0, -131067, 65534, 0, -65542, 65534, 0, -65541, 65534, 0, -65540, 65534, 0, -65539, 65534, 0, -65538, 65534, 0, -65537, 65534, 0, -131072, 65535, 0, -131071, 65535, 0, -131070, 65535, 0, -131069, 65535, 0, -131068, 65535, 0, -131067, 65535, 0, -65542, 65535, 0, -65541, 65535, 0, -65540, 65535, 0, -65539, 65535, 0, -65538, 65535, 0, -65537, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="GridMap2" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_center_x = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( -131070, 65532, 1, -131069, 65532, 1, -65540, 65532, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
+
+[node name="GridMap3" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 2, 0.3, 2 )
+cell_center_x = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( -917511, 65533, 0, -851976, 65533, 0, -786441, 65533, 0, -720906, 65533, 0, -655371, 65533, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
